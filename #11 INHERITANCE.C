@@ -36,7 +36,7 @@ person *create_family(int generations)
         person *parent0 = create_family(generations - 1);
         person *parent1 = create_family(generations - 1);
 
-        // Asigna los punteros a los padres
+        //ASIGNA LOS PUNTEROS A LOS PADRES
         new_person->parents[0] = parent0;
         new_person->parents[1] = parent1;
 
