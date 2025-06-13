@@ -1,5 +1,3 @@
-// Simulate genetic inheritance of blood type
-
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,12 +27,12 @@ int main(void)
 
 person *create_family(int generations)
 {
-    person *new_person = malloc(sizeof(person));  // Asigna memoria para una nueva persona
+    person *new_person = malloc(sizeof(person));  //ASIGNA MEMORIA PARA UNA NUEVA PERSONA
 
-    // Si quedan generaciones por crear (generations > 1)
+    //SI QUEDAN GENERACIONES POR CREAR
     if (generations > 1)
     {
-        // Crea dos nuevos padres llamando a create_family recursivamente
+        //CREA DOS NUEVOS PADRES LLAMANDO A CREATE_FAMILY RECURSIVAMENTE
         person *parent0 = create_family(generations - 1);
         person *parent1 = create_family(generations - 1);
 
@@ -42,41 +40,41 @@ person *create_family(int generations)
         new_person->parents[0] = parent0;
         new_person->parents[1] = parent1;
 
-        // Asigna alelos aleatorios de los padres
+        //ASIGNA ALELOS ALEATORIOS DE LOS PADRES
         new_person->alleles[0] = parent0->alleles[rand() % 2];
         new_person->alleles[1] = parent1->alleles[rand() % 2];
     }
-    // Si ya no quedan generaciones por crear (generations == 1)
+    //SI YA NO QUEDAN GENERACIONES POR CREAR
     else
     {
-        // Los padres se establecen como NULL porque es la generación más antigua
+        //LOS PADRES SE ESTABLECEN COMO NULL PORQUE ES LA GENERACIÓN MÁS ANTIGUA
         new_person->parents[0] = NULL;
         new_person->parents[1] = NULL;
 
-        // Asigna alelos aleatorios a esta persona
+        //ASIGNA ALELOS ALEATORIOS A ESTA PERSONA
         new_person->alleles[0] = random_allele();
         new_person->alleles[1] = random_allele();
     }
 
-    return new_person;  // Devuelve el puntero a la nueva persona creada
+    return new_person;  //DEVUELVE EL PUNTERO A LA NUEVA PERSONA CREADA
 }
 
-// Función que imprime la información de cada persona de la familia
+//FUNCIÓN QUE IMPRIME LA INFORMACIÓN DE CADA PERSONA DE LA FAMILIA
 void print_family(person *p, int generation)
 {
-    // Si la persona es NULL, no hay nada que imprimir
+    //SI LA PERSONA ES NULL, NO HAY NADA QUE IMPRIMIR
     if (p == NULL)
     {
         return;
     }
 
-    // Imprimir la sangría de acuerdo a la generación
+    //IMPRIMIR LA SANGRÍA DE ACUERDO A LA GENERACIÓN
     for (int i = 0; i < generation * INDENT_LENGTH; i++)
     {
         printf(" ");
     }
 
-    // Imprimir la generación y los alelos
+    //IMPRIMIR LA GENERACIÓN Y LOS ALELOS
     if (generation == 0)
     {
         printf("Generación inicial con alelos %c%c\n", p->alleles[0], p->alleles[1]);
@@ -86,32 +84,32 @@ void print_family(person *p, int generation)
         printf("Hijo de generación %i con alelos %c%c\n", generation, p->alleles[0], p->alleles[1]);
     }
 
-    // Llamar recursivamente para imprimir los padres
+    //LLAMAR RECURSIVAMENTE PARA IMPRIMIR LOS PADRES
     print_family(p->parents[0], generation + 1);
     print_family(p->parents[1], generation + 1);
 }
 
-// Función que libera la memoria asignada a cada persona en la familia
+//FUNCIÓN QUE LIBERA LA MEMORIA ASIGNADA A CADA PERSONA EN LA FAMILIA
 void free_family(person *p)
 {
-    // Si la persona es NULL, no hay nada que liberar
+    //SI LA PERSONA ES NULL, NO HAY NADA QUE LIBERAR
     if (p == NULL)
     {
         return;
     }
 
-    // Llamamos recursivamente para liberar a los padres
+    //LLAMAMOS RECURSIVAMENTE PARA LIBERAR A LOS PADRES
     free_family(p->parents[0]);
     free_family(p->parents[1]);
 
-    // Liberamos la memoria de la persona actual
+    //LIBERAMOS LA MEMORIA DE LA PERSONA ACTUAL
     free(p);
 }
 
-// Función que devuelve un alelo aleatorio ('A', 'B' o 'O')
+//FUNCIÓN QUE DEVUELVE UN ALELO ALEATORIO ('A', 'B' O 'O')
 char random_allele(void)
 {
-    int r = rand() % 3; // Número aleatorio entre 0 y 2
+    int r = rand() % 3; //NÚMERO ALEATORIO ENTRE 0 Y 2
     if (r == 0)
     {
         return 'A';
