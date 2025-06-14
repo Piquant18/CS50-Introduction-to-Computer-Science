@@ -1,7 +1,7 @@
 from cs50 import get_float
 
 def main():
-    coins = [25, 10, 5, 1]  # en centavos
+    coins = [25, 10, 5, 1]
     total_coins = 0
 
     while True:
