@@ -5,6 +5,7 @@ def obtener_altura():
 
             if 1 <= altura <= 8:
                 return altura
+
             else:
                 print("Ingresar un numero del 1 al 8")
 
