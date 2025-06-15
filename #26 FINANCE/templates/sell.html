@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sell Stock
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1 class="text-center">Sell Stock</h1>
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <label for="symbol" class="form-label">Select Stock:</label>
+            <select name="symbol" id="symbol" class="form-select" required>
+                <option value="">Select a stock</option>
+                {% for stock in stocks %}
+                    <option value="{{ stock.symbol }}">{{ stock.symbol }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="shares" class="form-label">Number of Shares:</label>
+            <input type="number" name="shares" id="shares" class="form-control" placeholder="Enter number of shares" min="1" required>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Sell</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
