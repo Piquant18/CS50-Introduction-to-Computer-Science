@@ -1,0 +1,11 @@
+Reflection on SQL Queries:
+
+During this exercise, I worked on creating SQL queries to analyze a music database. The process involved using JOIN statements to combine tables and filter results based on specific conditions.
+
+One of the challenges I faced was understanding the relationship between the `songs` and `artists` tables. I initially struggled with how to reference the artist's name through the artist_id in the `songs` table. After reviewing the schema and testing my queries, I realized that I needed to join the `songs` and `artists` tables using the `artist_id` field.
+
+I also learned the importance of using subqueries, especially when trying to find a specific artist's data, such as Post Malone's songs. The nested SELECT statement helped me filter the songs by the artist's id, which I didn't initially realize I needed.
+
+This experience has deepened my understanding of how to navigate relationships between tables in SQL. If I were to do it again, I would spend more time reviewing the schema to ensure I fully understand the relationships before starting to write the queries.
+
+In conclusion, I find SQL to be a powerful tool for data analysis, but I realize that it takes practice to become proficient with complex queries, especially when dealing with multiple tables and conditions.
