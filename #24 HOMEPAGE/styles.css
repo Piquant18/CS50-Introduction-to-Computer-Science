@@ -1,0 +1,33 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #007bff;
+    color: white;
+    padding: 20px 0;        /*Agrega espacio arriba y abajo del encabezado.*/
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 10px 0;          /*Espaciado arriba y abajo en el pie de página.*/
+}
+
+.navbar-brand {
+    font-weight: bold;   /*Hace el texto en negrita.*/
+}
+
+.nav-link:hover {
+    color: #007bff !important;      /*Cambia el color del enlace a azul cuando el usuario pasa el cursor sobre él.*/
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+ul {
+    list-style-type: square;          /*Usa viñetas cuadradas en las listas desordenadas.*/
+    padding-left: 20px;               /*Agrega un margen izquierdo para las listas.*/
+}
